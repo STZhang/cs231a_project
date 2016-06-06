@@ -1,0 +1,10 @@
+To setup experiments, one have to create a data.cfg file under the codes
+directory.
+
+The data.cfg file should contain one line as follows:
+
+datadir = <root path to the NYUv2 data>
+
+For example, if the data directory is /Home/xyz/NYUv2, one can write
+
+datadir = /Home/xyz/NYUv2

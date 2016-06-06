@@ -1,0 +1,31 @@
+Specification of the scene structs
+===================================
+
+Top level:
+- object_classes
+- scene_classes
+- GTs
+
+
+The indoor3d MATLAB framework uses a struct array to represent a 
+collection of scenes.
+
+Let Ks be the number of scene classes, and 
+    Ko be the number of object classes
+
+Each element of a the struct array is a struct with the following fields:
+
+- scene_label:  the class label of the scene
+- scene_pots:   the scene classification potentials (1-by-Ks)
+- objects:      the struct array of objects
+
+In particular, objects(i) is the i-th object in the scene, which itself
+is a struct, with the following fields:
+
+- label:            the class label of the object
+- use:              whether to use this object in training/evaluation
+- bndbox:           the 2D bound box
+- cube:             the object cube struct
+
+- seg_pots:         the object segmentation potentials (1-by-Ko)
+

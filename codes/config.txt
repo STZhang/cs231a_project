@@ -1,0 +1,28 @@
+Specification of the config struct
+====================================
+
+The Indoor3D framework uses the following a struct with following fields
+to capture the settings:
+
+Fields to list classes:
+
+- scene_classes:        A cell array of scene class names
+- object_classes:       A cell array of object class names
+
+One can get the number of classes by looking at the number of elements
+in these arrays.
+
+
+Fields to indicate which features to use
+
+- use_scene_score:      Use scene classification scores
+- use_detect_score:     Use object detection scores
+- use_segment_score:    Use segmentation-based scores
+- use_scene_object:     Use scene-object relations
+- use_object_object:    Use object-object relations
+
+Fields to provide common potentials
+
+- scene_object_pots:    The scene-object potentials
+- object_object_pots:   The object-object potentials
+

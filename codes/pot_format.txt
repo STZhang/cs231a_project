@@ -1,0 +1,10 @@
+Specification of unary potential format
+========================================
+
+The mat file should contain a variable pots, which is a cell array of 
+length n (Here, n is the number of scenes, e.g. n = 1449 for NYUv2).
+
+pots{i} is a matrix of size [ni, K], where ni is the number of objects
+in the i-th scene, and K is the final number of classes.
+
+pots{i}(j, :) gives the unary potential for the j-th object in i-th scene.

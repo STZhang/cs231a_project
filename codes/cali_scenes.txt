@@ -1,0 +1,55 @@
+A calibrated scene is represented by a MATLAB struct, stored in 
+
+    <data_dir>/cali_scenes/sc####.mat
+
+Here, #### is the index of the scene. To get the idx-th calibrated scene,
+one can use the following MATLAB statement:
+
+    s = load(fullfile(datadir, 'cali_scenes', sprintf('sc%04d.mat, idx)));
+
+To view this scene, write:
+
+    p3d_cali_view(s);
+
+Here, s is a MATLAB struct with the following fields:
+
+    Let h and w be the height and width of the scene image. (In NYU v2, 
+    h and w are always 480 and 640).
+
+    s.scene_type:   The class name of the scene [string]
+
+    s.name:         A unique name to identify the scene [string]
+
+    s.accel:        camera information [1 x 4]
+
+    s.depths:       The polished depth map (without holes) [h x w]
+
+    s.image:        The image [h x w x 3]
+
+    s.instance:     The four-category map [h x w]
+                    (NYU's ECCV 2012 paper classify points into four categories)
+
+    s.labels:       The label map [h x w]
+                    (The label map using our 35-class)
+
+    s.raw_depths:   The raw depth map [h x w]
+
+    s.wcoords:      The calibrated world coordinates [Npix x 3]
+                    (In this dataset Npix = 480 * 640 = 307200)
+
+                    If you do a reshape, as:
+
+                        W = reshape(s.wcoords, [h w 3]);
+
+                    Then 
+                    s.wcoords(i,j,1), s.wcoords(i,j,2), and s.wcoords(i,j,3)
+                    are the x-, y-, z-coordinate (calibrated) corresponding
+                    to the pixel at s.image(i, j).
+
+
+    s.walls:        The x-z coordinates of wall-like planes
+                    This is a cell array:
+                    each cell is a vector in form of [x0 z0 x1 z1]
+                    These coordinates are relative to the calibrated
+                    coordinate framework.
+                    
